@@ -1,11 +1,5 @@
 package com.sketch.mandoo.rightnow.network
 
-import dagger.Module
-import dagger.Provides
-import dagger.Reusable
-import retrofit2.Retrofit
-
-
 
 object NetworkObject {
     data class BusListModel(

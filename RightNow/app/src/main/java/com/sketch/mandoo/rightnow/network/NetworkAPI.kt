@@ -12,5 +12,5 @@ interface NetworkAPI {
     fun getBusList(@Query("number") number: String): Observable<List<NetworkObject.BusListModel>>
 
     @GET(GET_BUS_ARRIVE_INFO)
-    fun getBUsArriveList(@Query("busNumber") number:String, @Query("busStation") station:String) : Observable<List<NetworkObject.BusArriveInfoModel>>
+    fun getBusArriveList(@Query("busNumber") number:String, @Query("busStation") station:String) : Observable<List<NetworkObject.BusArriveInfoModel>>
 }
