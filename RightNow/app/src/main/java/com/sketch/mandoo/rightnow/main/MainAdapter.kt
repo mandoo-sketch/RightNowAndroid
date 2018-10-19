@@ -6,16 +6,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.sketch.mandoo.rightnow.R
 import com.sketch.mandoo.rightnow.databinding.ItemBusBinding
+import com.sketch.mandoo.rightnow.main.listener.Listener
 import com.sketch.mandoo.rightnow.network.NetworkObject
 import com.sketch.mandoo.rightnow.utils.log
 
 
-class MainAdapter: RecyclerView.Adapter<MainAdapter.ViewHolder>() {
+class MainAdapter(private var listener: Listener.SelectBusListener) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
     private lateinit var busList: List<NetworkObject.BusListModel>
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding : ItemBusBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.item_bus,parent, false)
+        binding.clickEvent = listener
         return ViewHolder(binding)
     }
 
@@ -32,7 +35,6 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-
     class ViewHolder(private val binding: ItemBusBinding) : RecyclerView.ViewHolder(binding.root) {
 
         private val viewModel = MainViewModel()
@@ -41,5 +43,6 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.ViewHolder>() {
             viewModel.bind(bus)
             binding.viewModel = viewModel
         }
+
     }
 }

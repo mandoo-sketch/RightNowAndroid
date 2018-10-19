@@ -8,12 +8,17 @@
         <variable
             name="viewModel"
             type="com.sketch.mandoo.rightnow.main.MainViewModel" />
+        
+        <variable
+            name="clickEvent"
+            type="com.sketch.mandoo.rightnow.main.listener.Listener.SelectBusListener" />
     </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="16dp"
+        android:onClick="@{ () -> clickEvent.searchItemBusSelectEvent(viewModel)}"
         android:paddingRight="16dp">
 
         <TextView
@@ -26,7 +31,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:mutableText="@{viewModel.getBusId()}"
-            tools:layout_editor_absoluteY="8dp" />
+            tools:layout_editor_absoluteY="8dp"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/bus_number"

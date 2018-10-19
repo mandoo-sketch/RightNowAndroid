@@ -3,7 +3,6 @@ package com.sketch.mandoo.rightnow.main
 import android.arch.lifecycle.MutableLiveData
 import com.sketch.mandoo.rightnow.base.BaseViewModel
 import com.sketch.mandoo.rightnow.network.NetworkObject
-import com.sketch.mandoo.rightnow.utils.log
 
 
 class MainViewModel :BaseViewModel(){
@@ -25,4 +24,8 @@ class MainViewModel :BaseViewModel(){
 
     fun getBusId() = busId
     fun getBusNumber() = busNumber
+    fun getBusFirstTime() = busFirstTime
+    fun getBusLastTime() = busLastTime
+    fun getBusTerm() = busTerm
+    fun getBusRouteType() = busRouteType
 }

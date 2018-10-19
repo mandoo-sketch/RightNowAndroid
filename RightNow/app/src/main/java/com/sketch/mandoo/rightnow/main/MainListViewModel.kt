@@ -1,20 +1,23 @@
 package com.sketch.mandoo.rightnow.main
 
 import android.arch.lifecycle.MutableLiveData
+import android.content.Intent
 import android.telephony.euicc.DownloadableSubscription
 import android.util.Log
 import android.view.View
 import com.sketch.mandoo.rightnow.R
 import com.sketch.mandoo.rightnow.base.BaseViewModel
+import com.sketch.mandoo.rightnow.main.listener.Listener
 import com.sketch.mandoo.rightnow.network.NetworkAPI
 import com.sketch.mandoo.rightnow.network.NetworkObject
+import com.sketch.mandoo.rightnow.route.RouteActivity
 import com.sketch.mandoo.rightnow.utils.log
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class MainListViewModel :BaseViewModel(){
+class MainListViewModel(val listener: Listener.SelectBusListener) :BaseViewModel(){
 
     @Inject
     lateinit var serviceAPI : NetworkAPI
@@ -27,7 +30,7 @@ class MainListViewModel :BaseViewModel(){
         storageNumber.value = number
     }
 
-    val mainAdapter = MainAdapter()
+    val mainAdapter = MainAdapter(listener)
 
     val errorMessage:MutableLiveData<String> = MutableLiveData()
     val errorClickListener = View.OnClickListener { loadBusList(storageNumber.value!!) }
